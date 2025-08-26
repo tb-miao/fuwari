@@ -47,7 +47,7 @@ if (!fs.existsSync(dirPath)) {
 const content = `---
 title: ${args[0]}
 published: ${getDate()}
-updated: ${getDate()}:需要自己填现在时间
+updated: ${getDate()} 需要自己填现在时间
 description: ''
 image: ''
 tags: []
