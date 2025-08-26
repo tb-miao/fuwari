@@ -19,4 +19,18 @@
 | `pnpm astro --help`        | Get help using the Astro CLI                        |
 > hello,hello,astro blog
 
+``` md
+---
+title: 
+published: 
+updated: 
+description: ''
+image: ''
+tags: []
+category: ''
+draft: false 
+pinned: false
+---
+```
+
 ![](./public/favicon/icon.png)

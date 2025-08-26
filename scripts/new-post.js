@@ -1,6 +1,8 @@
 /* This is a script to create a new post markdown file with front-matter */
 
+import { time, timeLog, timeStamp } from "console"
 import fs from "fs"
+import { getDefaultAutoSelectFamily, getDefaultAutoSelectFamilyAttemptTimeout } from "net"
 import path from "path"
 
 function getDate() {
@@ -15,8 +17,8 @@ function getDate() {
 const args = process.argv.slice(2)
 
 if (args.length === 0) {
-  console.error(`Error: No filename argument provided
-Usage: npm run new-post -- <filename>`)
+  console.error(`错误：未提供文件名参数
+用法：npm run new-post -- <filename>`)
   process.exit(1) // Terminate the script and return error code 1
 }
 
@@ -45,15 +47,16 @@ if (!fs.existsSync(dirPath)) {
 const content = `---
 title: ${args[0]}
 published: ${getDate()}
+updated: ${getDate()}:需要自己填现在时间
 description: ''
 image: ''
 tags: []
 category: ''
 draft: false 
-lang: ''
+pinned: false
 ---
 `
 
 fs.writeFileSync(path.join(targetDir, fileName), content)
 
-console.log(`Post ${fullPath} created`)
+console.log(`文章 ${fullPath} 创建成功！`)
