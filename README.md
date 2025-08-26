@@ -18,3 +18,5 @@
 | `pnpm astro ...`           | Run CLI commands like `astro add`, `astro check`    |
 | `pnpm astro --help`        | Get help using the Astro CLI                        |
 > hello,hello,astro blog
+
+![](./public/favicon/icon.png)
