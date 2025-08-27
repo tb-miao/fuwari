@@ -7,6 +7,7 @@ image: ''
 tags: [Markdown]
 category: 'Markdown'
 draft: false 
+series: Markdown
 ---
 
 ## GitHub Repository Cards

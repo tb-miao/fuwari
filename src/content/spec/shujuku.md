@@ -1,4 +1,4 @@
 ---
-title: mesite
+title: shujuku
 draft: false
 ---

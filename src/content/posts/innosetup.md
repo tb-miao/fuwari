@@ -4,6 +4,7 @@ published: 2024-10-26 11:47:18
 updated: 2024-10-26 11:47:18
 description: "innosetup安装程序工具"
 tags: ["工具"]
+category: '笔记'
 draft: false
 series: "推荐工具"
 ---

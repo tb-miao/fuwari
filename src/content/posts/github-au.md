@@ -4,6 +4,7 @@ published: 2025-08-16
 updated: 2025-08-16 16:45:00
 description: '分享一次Github账号被暂停的经历'
 image: '/images/github-au/2025-08-09.png'
+category: '笔记'
 tags: [Github]
 draft: false 
 ---

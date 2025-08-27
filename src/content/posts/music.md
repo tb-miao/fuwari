@@ -3,6 +3,7 @@ title: music
 published: 2025-04-19 12:50:44
 updated: 2025-04-19 12:50:44
 description: "music"
+category: '笔记'
 tags: ["music"]
 draft: false
 ---

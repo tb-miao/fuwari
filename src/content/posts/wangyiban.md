@@ -3,6 +3,7 @@ title: 我的世界网易版的教程药水
 published: 2024-09-08 10:36:28
 updated: 2024-09-08 10:36:28
 description: "我的世界网易版的教程药水"
+category: '笔记'
 tags: ["工具"]
 draft: false
 series: "推荐工具"

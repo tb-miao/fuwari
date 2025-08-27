@@ -1,0 +1,32 @@
+---
+
+import { getEntry, render } from "astro:content";
+import Markdown from "@components/misc/Markdown.astro";
+import I18nKey from "../i18n/i18nKey";
+import { i18n } from "../i18n/translation";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+
+const shujuku = await getEntry("spec", "shujuku");
+
+
+
+if (!shujuku) {
+	throw new Error("shujuku page content not found");
+}
+
+const { Content } = await render(shujuku);
+---
+<MainGridLayout title={i18n(I18nKey.shujuku)} description={i18n(I18nKey.shujuku)}>
+    <Markdown content={Content} />
+    <div class="card-base z-10 px-9 py-6 relative w-full ">
+        <h1 class="text-3xl font-bold mb-4">{i18n(I18nKey.shujuku)}</h1>
+    </div>
+    <div class="card-base z-10 px-9 py-6 relative w-full ">
+        <h2 class="text-2xl font-bold mb-4">Bilibili音乐</h2>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114800180922567&bvid=BV1Sf3RzDE5s&cid=30866934799&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"width="100%" height="500"></iframe>
+    </div>
+    <div class="card-base z-10 px-9 py-6 relative w-full ">
+        <h2 class="text-2xl font-bold mb-4">随机图片</h2>
+        <img src="https://uapis.cn/api/v1/random/image?category=acg&type=pc" alt="随机图片" />
+    </div>
+</MainGridLayout>

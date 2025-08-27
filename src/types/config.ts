@@ -49,7 +49,9 @@ export enum LinkPreset {
 	Archive = 1,
 	About = 2,
 	Friends = 3,
-	mesite = 4,
+	lab = 4,
+	Series = 5,
+	shujuku = 6,
 }
 
 export type NavBarLink = {
@@ -96,6 +98,7 @@ export type BlogPostData = {
 	category?: string;
 	prevTitle?: string;
 	prevSlug?: string;
+	pinned?: boolean
 	nextTitle?: string;
 	nextSlug?: string;
 };

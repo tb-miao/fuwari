@@ -5,6 +5,7 @@ description: Markdown 博客文章的简单示例。
 tags: [Markdown]
 category: Markdown
 draft: false
+series: Markdown
 ---
 
 # An h1 header

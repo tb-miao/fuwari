@@ -4,6 +4,7 @@ published: 2024-10-26 12:00:59
 updated: 2024-10-26 12:00:59
 description: "ScreenToGif屏幕(截图工具)"
 tags: ["工具"]
+category: '笔记'
 draft: false
 series: "推荐工具"
 ---

@@ -3,6 +3,7 @@ title: Snipaste 截图工具
 published: 2024-10-26 12:05:52
 updated: 2024-10-26 12:05:52
 description: "Snipaste 截图工具"
+category: '笔记'
 tags: ["工具"]
 draft: false
 series: "推荐工具"

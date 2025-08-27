@@ -19,8 +19,16 @@ export const LinkPresets: { [key in LinkPreset]: NavBarLink } = {
      name: i18n(I18nKey.friends),
      url: '/friends/',
     },
-	[LinkPreset.mesite]: {
-		name: i18n(I18nKey.mesite),
-		url: '/mesite/',
+	[LinkPreset.lab]: {
+		name: i18n(I18nKey.lab),
+		url: '/lab/',
+	},
+	[LinkPreset.Series]: {
+    name: i18n(I18nKey.series),
+    url: '/series/',
+  	},
+	[LinkPreset.shujuku]: {
+		name: i18n(I18nKey.shujuku),
+		url: '/shujuku/',
 	},
 };

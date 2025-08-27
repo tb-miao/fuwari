@@ -4,6 +4,7 @@ image: https://typoraio.cn/img/favicon-128.png
 published: 2024-10-26 12:09:46
 updated: 2024-10-26 12:09:46
 description: "Typora-一款 Markdown 编辑器和阅读器"
+category: '笔记'
 tags: ["工具"]
 draft: false
 series: "推荐工具"

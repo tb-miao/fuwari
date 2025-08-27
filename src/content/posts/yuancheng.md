@@ -3,6 +3,7 @@ title: 远程控制软件推荐
 published: 2025-04-19 12:47:43
 updated: 2025-04-19 12:47:43
 description: "远程控制软件推荐"
+category: '笔记'
 tags: ["工具"]
 draft: false
 series: "推荐工具"

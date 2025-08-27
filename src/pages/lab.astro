@@ -6,7 +6,7 @@ import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 
-const mesite = await getEntry("spec", "mesite");
+const lab = await getEntry("spec", "lab");
 
 const shuffledItems = [
   {
@@ -14,6 +14,12 @@ const shuffledItems = [
     imgurl: 'https://avatars.githubusercontent.com/u/172878250?v=4',
     desc: 'tbnya BA_LOGO',
     siteurl: 'https://ba.tbmiao.dpdns.org/',
+  },
+  {
+    title: 'docs',
+    imgurl: 'https://avatars.githubusercontent.com/u/172878250?v=4',
+    desc: 'A docs',
+    siteurl: 'https://page.tbmiao.dpdns.org/',
   },
   {
     title: 'TNUY-windows',
@@ -24,19 +30,27 @@ const shuffledItems = [
 ];
 
 
-if (!mesite) {
-	throw new Error("mesite page content not found");
+if (!lab) {
+	throw new Error("lab page content not found");
 }
 
-const { Content } = await render(mesite);
+const { Content } = await render(lab);
 ---
-<MainGridLayout title={i18n(I18nKey.mesite)} description={i18n(I18nKey.mesite)}>
-    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+<MainGridLayout title={i18n(I18nKey.lab)} description={i18n(I18nKey.lab)}>
+    <div class="card-base z-10 px-9 py-6 relative w-full ">
+        <h1 class="text-3xl font-bold mb-4" style="color: blue;">🌐 公告 🌐</h1><br>
         <div class="card-base z-10 px-9 py-6 relative w-full ">
-            <Markdown class="mt-2">
-            </Markdown>
-            <h1 class="text-3xl font-bold mb-4">{i18n(I18nKey.mesite)}</h1>
+            <Markdown class="text-lg leading-relaxed mb-4">
+            <h2 class="font-bold text-xl mb-2">🎉 网站正式上线，欢迎访问！🎉</h2>
+            <b style="color: #00e8f0;">✨ 入住Minebbs啦！--<a href="https://www.minebbs.com/members/aunya.107256/"id="link-content,unsafeTarget">🔗点我进入</a></b><br>
+            -----------------------------<br>
+            <b style="color: red;">☢️ 请注意，由于我们被攻击了，部分服务可能访问不进去，请见谅。☢️</b><br>
+            -----------------------------
+        </div>
+    
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 my-4">
+                <h1 class="text-3xl font-bold mb-4" style="color: blue;">🌐 我的网站 🌐</h1><br>
                 {shuffledItems.map((item) => (
                     <div class="flex flex-nowrap items-stretch h-28 gap-4 rounded-[var(--radius-large)]">
                         <div class="w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-900">
@@ -66,9 +80,10 @@ const { Content } = await render(mesite);
                     </div>
                 ))}
             </div>
-            <div class="flex justify-center">
-                <p>请更改: mesite.astro 文件.</p>
-            </div>
+        </div>
+    <div class="card-base z-10 px-9 py-6 relative w-full ">
+        <div class="flex justify-center">
+            <p>请更改: mesite.astro 文件.</p>
         </div>
     </div>
 </MainGridLayout>

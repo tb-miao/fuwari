@@ -3,6 +3,7 @@ title: motrix功能齐全的下载管理器
 published: 2024-10-12 20:18:15
 updated: 2024-10-12 20:18:15
 description: "motrix功能齐全的下载管理器"
+category: '笔记'
 tags: ["工具"]
 draft: false
 series: "推荐工具"

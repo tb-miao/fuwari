@@ -3,6 +3,7 @@ title: IDM激活脚本
 published: 2024-09-17 07:39:47
 updated: 2024-09-17 07:39:47
 description: "IDM激活脚本"
+category: '笔记'
 tags: ["工具"]
 draft: false
 series: "推荐工具"

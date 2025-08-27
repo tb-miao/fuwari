@@ -5,6 +5,7 @@ description: 使用表达性代码的代码块在 Markdown 中的外观。
 tags: [Markdown]
 category: Markdown
 draft: false
+series: Markdown
 ---
 
 在这里，我们将探讨使用 [表达性代码]（https://expressive-code.com/） 的代码块的外观。提供的示例基于官方文档，您可以参考这些文档了解更多详细信息。

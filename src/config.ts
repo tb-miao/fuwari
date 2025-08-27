@@ -17,11 +17,11 @@ export const siteConfig: SiteConfig = {
 	},
 	banner: {
 		enable: true,
-		src: "/images/neko-anime.jpg", // 在这里设置你的首页横幅图片;// Relative to the /src directory. Relative to the /public directory if it starts with '/'
+		src: "/images/lt/0072.jpg", // 在这里设置你的首页横幅图片;// Relative to the /src directory. Relative to the /public directory if it starts with '/'
 		position: "center", // 在这里设置你的横幅图片位置// Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
 		credit: {
 			enable: false, // 这里可以设置你的横幅图片的作者信息;// Display the credit text of the banner image
-			text: "TBNya", // Credit text to be displayed
+			text: "by UAP", // Credit text to be displayed
 			url: "", // (Optional) URL link to the original artwork or artist's page
 		},
 	},
@@ -44,9 +44,11 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
+		LinkPreset.Series,
 		LinkPreset.About,
 		LinkPreset.Friends,
-		LinkPreset.mesite,
+		LinkPreset.shujuku,
+		LinkPreset.lab,
 		//{
 		//	name: "GitHub",
 		//	url: "https://github.com/saicaca/fuwari", // Internal links should not include the base path, as it is automatically added

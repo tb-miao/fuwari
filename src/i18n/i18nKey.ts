@@ -4,6 +4,7 @@ enum I18nKey {
 	archive = "archive",
 	search = "search",
 	series = 'series',
+	shujuku = "shujuku",
 
 	tags = "tags",
 	categories = "categories",
@@ -34,7 +35,7 @@ enum I18nKey {
 	publishedAt = "publishedAt",
 	license = "license",
 	friends = 'friends',
-	mesite = 'mesite',
+	lab = 'lab',
 }
 
 export default I18nKey;

@@ -4,6 +4,7 @@ image: https://t1.daumcdn.net/potplayer/main/img/favicon.ico
 published: 2024-10-26 12:18:38
 updated: 2024-10-26 12:18:38
 description: "potplayer"
+category: '笔记'
 tags: ["工具"]
 draft: false
 series: "推荐工具"

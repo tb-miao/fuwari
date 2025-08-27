@@ -3,6 +3,7 @@ title: 卸载工具合集
 published: 2024-11-27 17:11:54
 updated: 2024-11-27 17:11:54
 description: "卸载工具合集"
+category: '笔记'
 tags: ["工具"]
 draft: false
 series: "推荐工具"

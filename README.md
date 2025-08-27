@@ -29,6 +29,7 @@ image: ''
 tags: []
 category: ''
 draft: false 
+pinned: false
 ---
 ```
 

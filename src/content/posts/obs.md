@@ -3,6 +3,7 @@ title: obs
 published: 2024-10-12 20:01:37
 updated: 2024-10-12 20:01:37
 description: "obs"
+category: '笔记'
 tags: ["工具"]
 draft: false
 series: "推荐工具"

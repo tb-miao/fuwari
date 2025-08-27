@@ -3,6 +3,7 @@ title: 如何使用nwjs开发自己的第一个桌面应用
 published: 2024-12-27 20:49:14
 updated: 2024-12-27 20:49:14
 description: "如何使用nwjs开发自己的第一个桌面应用"
+category: '笔记'
 tags: ["教程"]
 draft: false
 ---

@@ -3,6 +3,7 @@ title: 开我的世界java服务器工具
 published: 2025-02-08 10:20:58
 updated: 2025-02-08 10:20:58
 description: "开我的世界java服务器工具"
+category: '笔记'
 tags: ["工具"]
 draft: false
 series: "推荐工具"

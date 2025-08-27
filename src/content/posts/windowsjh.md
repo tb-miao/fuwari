@@ -3,6 +3,7 @@ title: windows永久激活
 published: 2024-12-22 10:04:59
 updated: 2024-12-22 10:04:59
 description: "windows永久激活"
+category: '笔记'
 tags: ["windows"]
 draft: false
 ---
