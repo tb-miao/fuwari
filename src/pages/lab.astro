@@ -1,78 +1,78 @@
 ---
 
-import { getEntry, render } from "astro:content";
-import Markdown from "@components/misc/Markdown.astro";
-import I18nKey from "../i18n/i18nKey";
-import { i18n } from "../i18n/translation";
-import MainGridLayout from "../layouts/MainGridLayout.astro";
-
+import { getEntry } from "astro:content";
 const lab = await getEntry("spec", "lab");
-
-const shuffledItems = [
-  {
-    title: 'BA_LOGO',
-    imgurl: 'https://avatars.githubusercontent.com/u/172878250?v=4',
-    desc: 'tbnya BA_LOGO',
-    siteurl: 'https://ba.tbmiao.dpdns.org/',
-  },
-  {
-    title: 'TNUY-windows',
-    imgurl: 'https://avatars.githubusercontent.com/u/172878250?v=4',
-    desc: 'A tool developed in Python',
-    siteurl: 'https://github.com/tb-miao/TNUY-windows',
-  },
-];
 
 
 if (!lab) {
 	throw new Error("lab page content not found");
 }
 
-const { Content } = await render(lab);
 ---
-<MainGridLayout title={i18n(I18nKey.lab)} description={i18n(I18nKey.lab)}>
-    <div class="card-base z-10 px-9 py-6 relative w-full ">
-        <h1 class="text-3xl font-bold mb-4" style="color: blue;">🌐 公告 🌐</h1><br>
-        <div class="card-base z-10 px-9 py-6 relative w-full ">
-            <Markdown class="text-lg leading-relaxed mb-4">
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="AUNYA's Lab">
+    <meta name="keywords" content="qqaunya,aunya的总部,aunya的lab,aunya的Lab,AUNya的lab,AUNya的Lab,AUNya's Lab,AUNya,雨云,虚拟主机,云服务器,我的世界服务器,游戏服务器,BGP,游戏云,MC,VPS,高主频,免费主机,宝塔,美国vps,香港虚拟主机,免费空间,便宜vps,kvm,lxc,高防空间,美国虚拟主机,EP主机,美国云服务器,免费CDN,香港CDN,免费二级域名,免费SSL证书">
+    <meta name="author" content="AUNYA">
+    <meta name="title" content="AUNYA's Lab">
+    <link rel="icon" href="../favicon/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💗 AUNYA's Lab 💗</title>
+  </head>
+    <body>
+      <noscript>
+        <strong>AUNya助手：访问需要开启JavaScript支持噢</strong>
+      </noscript>
+    <div id="root">
+      <main class="px-6 py-2 flex flex-wrap justify-center w-full">
+        <img src="../assets/images/AUNYA-LOGO-YY.png" alt="AUNYA-LOGO">
+      </main>
+      <main class="px-6 py-2 flex flex-wrap justify-center w-full">
+        <section class="rounded-xl bg-white pt-6 pl-6 pb-6 focus:outline-none m-4 w-80 max-w-[24rem] flex-1 flex shadow-lg hover:bg-slate-50 transition">
+          <div class="flex-1">
+            <h2 class="font-bold text-xl mb-2" style="color: rgb(0, 4, 255);">🌐 公告 🌐</h2>
             <h2 class="font-bold text-xl mb-2">🎉 网站正式上线，欢迎访问！🎉</h2>
             <b style="color: #00e8f0;">✨ 入住Minebbs啦！--<a href="https://www.minebbs.com/members/aunya.107256/"id="link-content,unsafeTarget">🔗点我进入</a></b><br>
             -----------------------------<br>
             <b style="color: red;">☢️ 请注意，由于我们被攻击了，部分服务可能访问不进去，请见谅。☢️</b><br>
-            -----------------------------
-        </div>
-    
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 my-4">
-                <h1 class="text-3xl font-bold mb-4" style="color: blue;">🌐 我的网站 🌐</h1><br>
-                {shuffledItems.map((item) => (
-                    <div class="flex flex-nowrap items-stretch h-28 gap-4 rounded-[var(--radius-large)]">
-                        <div class="w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-900">
-                            <img src={item.imgurl} alt="img" class="w-full h-full object-cover">
-                        </div>
-                        <div class="grow w-full">
-                            <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 mb-1">{item.title}</div>
-                            <div class="text-50 text-sm font-medium">{item.desc}</div>
-                            <div class:list={["items-center", {"flex": true, "hidden md:flex" : false}]}>
-                                <div class="flex flex-row flex-nowrap items-center">
-                                    {(item.tags && item.tags.length > 0) && item.tags.map((tag,i) => (
-                                    <div class:list={[{"hidden": i==0}, "mx-1.5 text-[var(--meta-divider)] text-sm" ]}>
-                                        /
-                                    </div>
-                                    <span class="transition text-50 text-sm font-medium">
-                                        {tag}
-                                    </span>))}
-                                    {!(item.tags && item.tags.length > 0) && <div class="transition text-50 text-sm font-medium">{i18n(I18nKey.noTags)}</div>}
-                                </div>
-                            </div>
-                        </div>
-                        <a href={item.siteurl} target="_blank" rel="noopener noreferrer"class="flex btn-regular w-[3.25rem] rounded-lg bg-[var(--enter-btn-bg)] hover:bg-[var(--enter-btn-bg-hover)] active:bg-[var(--enter-btn-bg-active)] active:scale-95">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="transition text-[var(--primary)] text-4xl mx-auto iconify iconify--material-symbols" width="1em" height="1em" viewBox="0 0 24 24">
-                                <path fill="currentColor" d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7z"></path>
-                            </svg>
-                        </a>
-                    </div>
-                ))}
+            -----------------------------<br>
+            <b style="color: #00e8f0;"><a href="/">=返回=</a></b>
+          </div>
+        </section>
+      </main>
+      <main class="px-6 py-2 flex flex-wrap justify-center w-full">
+        <section class="rounded-xl bg-white pt-6 pl-6 pb-6 focus:outline-none m-4 w-80 max-w-[24rem] flex-1 flex shadow-lg hover:bg-slate-50 transition">
+          <div class="flex-1"><a href="https://ba.tbmiao.dpdns.org/" target="_blank"id="link-content,unsafeTarget">
+            <h2 class="font-bold text-xl mb-2">BA_LOGO</h2>
+            <p class="mb-2 text-slate-600 font-normal text-base h-12">BA_LOGO</p>
+            <p class="mb-2 text-sky-600 font-normal text-sm">https://ba.tbmiao.dpdns.org/</p></a></div>
+            <div class="w-12 h-full border-l">
+              <a href="https://github.com/tb-miao/BA_LOGO" target="_blank"id="link-content,unsafeTarget">
+                <div class="h-10 pt-2">
+                  <img src="../assets/images/github.svg" class="w-6 h-6 mx-auto">
+                </div>
+              </a>
             </div>
-        </div>
-</MainGridLayout>
+        </section>
+        <section class="rounded-xl bg-white pt-6 pl-6 pb-6 focus:outline-none m-4 w-80 max-w-[24rem] flex-1 flex shadow-lg hover:bg-slate-50 transition">
+          <div class="flex-1"><a href="https://github.com/tb-miao/TNUY-windows" target="_blank"id="link-content,unsafeTarget">
+            <h2 class="font-bold text-xl mb-2">TNUY-windows</h2>
+            <p class="mb-2 text-slate-600 font-normal text-base h-12">A tool developed in Python</p>
+            <p class="mb-2 text-sky-600 font-normal text-sm">https://github.com/tb-miao/TNUY-windows</p></a></div>
+            <div class="w-12 h-full border-l">
+              <a href="https://github.com/tb-miao/TNUY-windows" target="_blank"id="link-content,unsafeTarget">
+                <div class="h-10 pt-2">
+                  <img src="../assets/images/github.svg" class="w-6 h-6 mx-auto">
+                </div>
+              </a>
+            </div>
+        </section>
+      </main>
+    </div>
+    <footer class="px-6 py-2 flex flex-wrap justify-center w-full">
+      <p>© 2024-hitherto AUNya. All Rights Reserved. | Powered by tbnya.</p>
+    </footer>
+</body>
+</html>
