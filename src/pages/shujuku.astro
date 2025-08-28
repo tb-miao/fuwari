@@ -17,16 +17,17 @@ if (!shujuku) {
 const { Content } = await render(shujuku);
 ---
 <MainGridLayout title={i18n(I18nKey.shujuku)} description={i18n(I18nKey.shujuku)}>
-    <Markdown content={Content} />
     <div class="card-base z-10 px-9 py-6 relative w-full ">
         <h1 class="text-3xl font-bold mb-4">{i18n(I18nKey.shujuku)}</h1>
     </div>
     <div class="card-base z-10 px-9 py-6 relative w-full ">
         <h2 class="text-2xl font-bold mb-4">Bilibili音乐</h2>
-        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114800180922567&bvid=BV1Sf3RzDE5s&cid=30866934799&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"width="100%" height="500"></iframe>
+        <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=114800180922567&bvid=BV1Sf3RzDE5s&cid=30866934799&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%" height="500"></iframe>
     </div>
     <div class="card-base z-10 px-9 py-6 relative w-full ">
+        <Markdown>
         <h2 class="text-2xl font-bold mb-4">随机图片</h2>
-        <img src="https://uapis.cn/api/v1/random/image?category=acg&type=pc" alt="随机图片" />
+        <a href="https://uapis.cn/api/v1/random/image?category=acg&type=pc">[随机ACG图片]</a>
+        </Markdown>
     </div>
 </MainGridLayout>
