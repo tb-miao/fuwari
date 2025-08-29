@@ -101,6 +101,7 @@ const bannerOffset =
 
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<script src="/js/umami-share.js" defer></script>
 		{favicons.map(favicon => (
 			<link rel="icon"
 				  href={favicon.src.startsWith('/') ? url(favicon.src) : favicon.src}
@@ -136,17 +137,97 @@ const bannerOffset =
 			let offset = Math.floor(window.innerHeight * (BANNER_HEIGHT_EXTEND / 100));
 			offset = offset - offset % 4;
 			document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
+		// Background image loading detection
+			const bgUrl = getComputedStyle(document.documentElement).getPropertyValue('--bg-url').trim();
+			const bgEnable = getComputedStyle(document.documentElement).getPropertyValue('--bg-enable').trim();
+			
+			if (bgUrl && bgUrl !== 'none' && bgEnable === '1') {
+				const img = new Image();
+				const urlMatch = bgUrl.match(/url\(["']?([^"')]+)["']?\)/);
+				if (urlMatch) {
+					img.onload = function() {
+						// 背景图片完全加载后，显示背景并启用卡片透明效果
+						document.body.classList.add('bg-loaded');
+						document.documentElement.style.setProperty('--card-bg', 'var(--card-bg-transparent)');
+						document.documentElement.style.setProperty('--float-panel-bg', 'var(--float-panel-bg-transparent)');
+					};
+					img.onerror = function() {
+						// Keep cards opaque if background image fails to load
+						console.warn('Background image failed to load, keeping cards opaque');
+					};
+					img.src = urlMatch[1];
+				}
+			}
 		</script>
 		<style define:vars={{
 			configHue,
 			'page-width': `${PAGE_WIDTH}rem`,
-		}}></style>  <!-- defines global css variables. This will be applied to <html> <body> and some other elements idk why -->
-
+			'bg-url': siteConfig.background.src ? `url(${siteConfig.background.src})` : 'none',
+			'bg-enable': siteConfig.background.enable ? '1' : '0',
+			'bg-position': siteConfig.background.position || 'center',
+			'bg-size': siteConfig.background.size || 'cover',
+			'bg-repeat': siteConfig.background.repeat || 'no-repeat',
+			'bg-attachment': siteConfig.background.attachment || 'fixed',
+			'bg-opacity': (siteConfig.background.opacity || 0.3).toString()
+		}}>
+			:root {
+				--bg-url: var(--bg-url);
+				--bg-enable: var(--bg-enable);
+				--bg-position: var(--bg-position);
+				--bg-size: var(--bg-size);
+				--bg-repeat: var(--bg-repeat);
+				--bg-attachment: var(--bg-attachment);
+				--bg-opacity: var(--bg-opacity);
+			}
+			
+			/* Background image configuration */
+			body {
+				--bg-url: var(--bg-url);
+				--bg-enable: var(--bg-enable);
+				--bg-position: var(--bg-position);
+				--bg-size: var(--bg-size);
+				--bg-repeat: var(--bg-repeat);
+				--bg-attachment: var(--bg-attachment);
+				--bg-opacity: var(--bg-opacity);
+			}
+			
+			body::before {
+				content: '' !important;
+				position: fixed !important;
+				top: 0 !important;
+				left: 0 !important;
+				width: 100% !important;
+				height: 100% !important;
+				background-image: var(--bg-url) !important;
+				background-position: var(--bg-position) !important;
+				background-size: var(--bg-size) !important;
+				background-repeat: var(--bg-repeat) !important;
+				background-attachment: var(--bg-attachment) !important;
+				opacity: 0 !important;
+				pointer-events: none !important;
+				z-index: -1 !important;
+				display: block !important;
+				transition: opacity 0.3s ease-in-out !important;
+			}
+			
+			body.bg-loaded::before {
+				opacity: calc(var(--bg-opacity) * var(--bg-enable)) !important;
+			}
+		</style>
 
 		<slot name="head"></slot>
 
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
-
+		<!-- microsoft clarity -->
+		<script type="text/javascript">
+    		(function(c,l,a,r,i,t,y){
+        	c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        	t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        	y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    		})(window, document, "clarity", "script", "t28zfu5qix");
+		</script>
+		<!-- Umami分析（自建） -->
+		 <script defer src="https://cloud.umami.is/script.js" data-website-id="50cd57c4-1d49-4941-88d5-b1cce22ee6a1"></script>
 	</head>
 	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
 		  data-overlayscrollbars-initialize
@@ -156,6 +237,65 @@ const bannerOffset =
 
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
+
+		<!-- 域名检测脚本 -->
+		<script is:inline define:vars={{officialSites: ["https://tbmiao.dpdns.org"]}}>
+			// 域名检测功能
+			function checkDomain() {
+				try {
+					// 获取当前访问的完整URL
+					const currentUrl = window.location.href;
+					// 获取当前域名
+					const currentDomain = window.location.hostname;
+					
+					// 获取所有官方域名
+					const officialDomains = officialSites.map(site => {
+						try {
+							return new URL(site).hostname;
+						} catch (e) {
+							return null;
+						}
+					}).filter(domain => domain !== null);
+					
+					// 检查当前域名是否为官方域名或本地开发环境
+					const isOfficialDomain = officialDomains.includes(currentDomain);
+					const isLocalDev = currentDomain === 'localhost' || currentDomain === '127.0.0.1';
+					
+					// 如果当前域名不是官方域名且不是本地开发环境
+					if (!isOfficialDomain && !isLocalDev) {
+						// 创建警告弹窗
+						const shouldRedirect = confirm(
+							`⚠️ 域名安全警告\n\n` +
+							`您当前访问的域名：${currentDomain}\n` +
+							`官方域名：${officialDomains.join(', ')}\n\n` +
+							`您可能正在访问非官方网站，存在安全风险！\n\n` +
+							`点击"确定"跳转到官方网站\n` +
+							`点击"取消"继续访问当前网站（不推荐）`
+						);
+						
+						// 如果用户选择跳转到官方网站
+						if (shouldRedirect) {
+							// 构建官方网站的对应页面URL（使用第一个官方网站）
+							const currentPath = window.location.pathname + window.location.search + window.location.hash;
+							const officialPageUrl = officialSites[0] + currentPath;
+							// 跳转到官方网站
+							window.location.href = officialPageUrl;
+						}
+					}
+				} catch (error) {
+					// 如果检测过程中出现错误，静默处理，不影响正常访问
+					console.warn('域名检测失败:', error);
+				}
+			}
+			
+			// 页面加载完成后执行域名检测
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', checkDomain);
+			} else {
+				checkDomain();
+			}
+		</script>
+
 	</body>
 </html>
 

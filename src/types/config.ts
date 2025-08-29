@@ -17,6 +17,9 @@ export type SiteConfig = {
 		| "id";
 
 	themeColor: {
+[x: string]: any;
+forceDarkMode: any;
+forceDarkMode: any;
 		hue: number;
 		fixed: boolean;
 	};
@@ -29,6 +32,15 @@ export type SiteConfig = {
 			text: string;
 			url?: string;
 		};
+	};
+	background: {
+		enable: boolean;
+		src: string;
+		position?: "top" | "center" | "bottom";
+		size?: "cover" | "contain" | "auto";
+		repeat?: "no-repeat" | "repeat" | "repeat-x" | "repeat-y";
+		attachment?: "fixed" | "scroll" | "local";
+		opacity?: number;
 	};
 	toc: {
 		enable: boolean;
@@ -79,6 +91,12 @@ export type LicenseConfig = {
 	enable: boolean;
 	name: string;
 	url: string;
+};
+export type UmamiConfig = {
+	enable: boolean;
+	baseUrl: string;
+	shareId: string;
+	timezone: string;
 };
 
 export type LIGHT_DARK_MODE =

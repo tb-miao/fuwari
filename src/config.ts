@@ -4,6 +4,7 @@ import type {
 	NavBarConfig,
 	ProfileConfig,
 	SiteConfig,
+	UmamiConfig,
 } from "./types/config";
 import { LinkPreset } from "./types/config";
 
@@ -13,10 +14,11 @@ export const siteConfig: SiteConfig = {
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
 		hue: 355, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
-		fixed: true, // Hide the theme color picker for visitors
+		fixed: true,
+		forceDarkMode: undefined
 	},
 	banner: {
-		enable: true,
+		enable: false,
 		src: "/images/lt/0073.jpg", // 在这里设置你的首页横幅图片;// Relative to the /src directory. Relative to the /public directory if it starts with '/'
 		position: "center", // 在这里设置你的横幅图片位置// Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
 		credit: {
@@ -24,6 +26,15 @@ export const siteConfig: SiteConfig = {
 			text: "by UAP", // Credit text to be displayed
 			url: "", // (Optional) URL link to the original artwork or artist's page
 		},
+	},
+	background: {
+		enable: true, // Enable background image
+		src: "https://uapis.cn/api/v1/random/image?category=acg&type=pc", // Background image URL (supports HTTPS)
+		position: "center", // Background position: 'top', 'center', 'bottom'
+		size: "cover", // Background size: 'cover', 'contain', 'auto'
+		repeat: "no-repeat", // Background repeat: 'no-repeat', 'repeat', 'repeat-x', 'repeat-y'
+		attachment: "fixed", // Background attachment: 'fixed', 'scroll', 'local'
+		opacity: 0.5, // Background opacity (0-1)
 	},
 	toc: {
 		enable: true, // 这里可以设置是否显示文章目录;// Display the table of contents on the right side of the post
@@ -49,6 +60,11 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Friends,
 		LinkPreset.shujuku,
 		LinkPreset.lab,
+		{
+			name: "统计",
+			url: "https://cloud.umami.is/share/pBFqYW1e5248KxEz/tbmiao.dpdns.org",
+			external: true,
+		}
 		//{
 		//	name: "GitHub",
 		//	url: "https://github.com/saicaca/fuwari", // Internal links should not include the base path, as it is automatically added
@@ -101,6 +117,12 @@ export const licenseConfig: LicenseConfig = {
 	enable: true,
 	name: "CC BY-NC-SA 4.0",
 	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+};
+export const umamiConfig: UmamiConfig = {
+	enable: true,
+	baseUrl: "https://us.umami.is",
+	shareId: "pBFqYW1e5248KxEz",
+	timezone: "Asia/Shanghai",
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
