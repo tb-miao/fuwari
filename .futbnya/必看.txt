@@ -1,0 +1,5 @@
+github切换账号后想git push 一定要看https://blog.csdn.net/jetty_welcome/article/details/104410586
+如果不看就执行git push 的话就push到之前的账号了。
+
+修复Note that in CI environments this setting is true by default. If you still need to run install in such cases, use "pnpm install --no-frozen-lockfile"报错：
+执行pnpm install --no-frozen-lockfile

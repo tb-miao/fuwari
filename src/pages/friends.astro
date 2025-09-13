@@ -1,0 +1,164 @@
+---
+
+import { getEntry, render } from "astro:content";
+import Markdown from "@components/misc/Markdown.astro";
+import I18nKey from "../i18n/i18nKey";
+import { i18n } from "../i18n/translation";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+import Comments from '@components/widget/Comments.svelte'
+
+
+const friendsPost = await getEntry('spec', 'friends')
+const { Content } = await friendsPost.render()
+const shuffledItems = [
+  {
+    title: 'Astro',
+    imgurl: 'https://avatars.githubusercontent.com/u/44914786?s=48&v=4',
+    desc: 'The web framework for content-driven websites. ⭐️ Star to support our work!',
+    siteurl: 'https://github.com/withastro/astro',
+    tags: ['框架'],
+  },
+  {
+    title: '二叉树树的博客',
+    imgurl: 'https://q2.qlogo.cn/headimg_dl?dst_uin=2726730791&spec=0',
+    desc: '你往小腹下探探有棍你就倒倒有豆你就点点比网站好玩🥰',
+    siteurl: 'https://www.2x.nz/',
+    tags: ['博客'],
+  },
+  {
+    title: 'Pinpe的云端',
+    imgurl: 'https://pinpe.top/_astro/head.DyPclklS_2iOsAQ.webp',
+    siteurl: 'https://pinpe.top/',
+    tags: ['博客'],
+  },
+  {
+    title: 'AULyPc',
+    desc: 'AULyPc',
+    imgurl: "https://prd.resource-api.lit.link/images/creators/06fbb06d-4ac4-4ba1-b522-84bcdec23ce9/f5241a89-7a56-4dfd-9fad-a1bd32a74758.jpg",
+    siteurl: 'https://aulypc1.github.io/',
+    tags: ['博客'],
+  },
+  {
+    title: '伊卡的记事本',
+    imgurl: 'https://ikamusume7.org/avatar.webp',
+    desc: '伊卡的记事本',
+    siteurl: 'https://ikamusume7.org/',
+    tags: ['博客'],
+  },
+  {
+    title: 'imxizhenのBlog',
+    imgurl: 'https://blog.imxizhen.asia/_astro/avatar.AhEod6fH_Z23Hua6.webp',
+    desc: 'imxizhenのBlog',
+    siteurl: 'https://blog.imxizhen.asia/',
+    tags: ['博客'],
+  },
+  {
+    title: '半入烟云的小站',
+    imgurl: 'https://avatars.githubusercontent.com/u/125740354?s=48&v=4',
+    siteurl: 'https://calabchen.github.io/',
+    tags: ['博客'],
+  },
+  {
+    title: 'DreamWorld',
+    imgurl: 'https://blog.litenpanjun.cn/_astro/avatar.oJ1UYqfJ_HDlRy.webp',
+    siteurl: 'https://blog.litenpanjun.cn/',
+    tags: ['博客'],
+  },
+  {
+    title: 'fulie blog',
+    imgurl: 'https://q2.qlogo.cn/headimg_dl?dst_uin=3672492995&spec=5',
+    siteurl: 'https://pcb.im/',
+    tags: ['博客'],
+  },
+  {
+    title: 'Morse s Site',
+    imgurl: 'https://ihsiao.com/_astro/avatar.DK0ALix6_23F9hU.webp',
+    siteurl: 'https://ihsiao.com/',
+    tags: ['博客'],
+  },
+  {
+    title: 'Cherry s Blog',
+    imgurl: 'https://s2.loli.net/2025/03/07/dO2fpgH4qbzeyNB.jpg',
+    siteurl: 'https://www.persicif.xyz/',
+    tags: ['博客'],
+  },
+  {
+    title: '雨后初晴社',
+    imgurl: 'https://www.rainafter.cn/_astro/avatar.BJVLJReg_2nzXtP.webp',
+    siteurl: 'https://www.rainafter.cn/',
+    tags: ['博客'],
+  },
+  {
+    title: '幽桜楼',
+    imgurl: 'https://iuuko.com/avatar.webp',
+    siteurl: 'https://iuuko.com/',
+    tags: ['博客'],
+  },
+]
+---
+<MainGridLayout title={i18n(I18nKey.friends)} description={i18n(I18nKey.friends)}>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full ">
+            <Markdown class="mt-2">
+            </Markdown>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8 my-4">
+                {shuffledItems.map((item) => (
+                    <div class="flex flex-nowrap items-stretch h-28 gap-4 rounded-[var(--radius-large)]">
+                        <div class="w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden bg-zinc-200 dark:bg-zinc-900">
+                            <img src={item.imgurl} alt="站点头像" class="w-full h-full object-cover">
+                        </div>
+                        <div class="grow w-full">
+                            <div class="font-bold transition text-lg text-neutral-900 dark:text-neutral-100 mb-1">{item.title}</div>
+                            <div class="text-50 text-sm font-medium">{item.desc}</div>
+                            <div class:list={["items-center", {"flex": true, "hidden md:flex" : false}]}>
+                                <div class="flex flex-row flex-nowrap items-center">
+                                    {(item.tags && item.tags.length > 0) && item.tags.map((tag,i) => (
+                                    <div class:list={[{"hidden": i==0}, "mx-1.5 text-[var(--meta-divider)] text-sm" ]}>
+                                        /
+                                    </div>
+                                    <span class="transition text-50 text-sm font-medium">
+                                        {tag}
+                                    </span>))}
+                                    {!(item.tags && item.tags.length > 0) && <div class="transition text-50 text-sm font-medium">{i18n(I18nKey.noTags)}</div>}
+                                </div>
+                            </div>
+                        </div>
+                        <a href={item.siteurl} target="_blank" rel="noopener noreferrer"class="flex btn-regular w-[3.25rem] rounded-lg bg-[var(--enter-btn-bg)] hover:bg-[var(--enter-btn-bg-hover)] active:bg-[var(--enter-btn-bg-active)] active:scale-95">
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="transition text-[var(--primary)] text-4xl mx-auto iconify iconify--material-symbols" width="1em" height="1em" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M12.6 12L8.7 8.1q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275l4.6 4.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.6 4.6q-.275.275-.7.275t-.7-.275t-.275-.7t.275-.7z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                ))}
+          </div>
+        </div>
+    </div>
+            <div class="card-base z-10 px-9 py-6 relative w-full ">
+              <Markdown class="mt-2">
+                ===========================
+              <b style="color: #7ed9f0ff"><p>申请友链格式：</p></b>
+              <li>网站名称：AUNyaの小窝
+              <li>网站地址：https://tbmiao.dpdns.org
+              <li>网站描述：
+              <li>网站头像：https://tbmiao.dpdns.org/images/avatar.png
+              </Markdown>
+              ===========================
+            </div>
+            <div class="card-base z-10 px-9 py-6 relative w-full ">
+              <script src="https://giscus.app/client.js"
+              data-repo="tb-miao/fuwari"
+              data-repo-id="R_kgDOPg6Atg"
+              data-category="Announcements"
+              data-category-id="DIC_kwDOPg6Ats4CuqGa"
+              data-mapping="pathname"
+              data-strict="0"
+              data-reactions-enabled="1"
+              data-emit-metadata="0"
+              data-input-position="bottom"
+              data-theme="light"
+              data-lang="zh-CN"
+              crossorigin="anonymous"
+              async>
+              </script>
+              <Comments client:only="svelte"></Comments>
+</MainGridLayout>
