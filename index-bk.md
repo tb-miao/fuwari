@@ -15,3 +15,5 @@ fuwari\public\favicon"   网站图标文件
 fuwari\astro.config.mjs  网站地址配置文件
 
 fuwari\src/layouts/Layout.astro  网站hard文件
+
+fuwari\src\components\widget\SideBar.astro  侧边栏
