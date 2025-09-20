@@ -1,5 +1,5 @@
 # 文件信息对应
-2025-09-20
+[markdown.css报错修复](https://github.com/saicaca/fuwari/issues/528)
 
 "fuwari\src\config.ts" 站点配置文件
 
