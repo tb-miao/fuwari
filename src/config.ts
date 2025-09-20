@@ -34,7 +34,7 @@ export const siteConfig: SiteConfig = {
 		size: "cover", // Background size: 'cover', 'contain', 'auto'
 		repeat: "no-repeat", // Background repeat: 'no-repeat', 'repeat', 'repeat-x', 'repeat-y'
 		attachment: "fixed", // Background attachment: 'fixed', 'scroll', 'local'
-		opacity: 0.5, // Background opacity (0-1)
+		opacity: 0.45, // Background opacity (0-1)
 	},
 	toc: {
 		enable: true, // 这里可以设置是否显示文章目录;// Display the table of contents on the right side of the post

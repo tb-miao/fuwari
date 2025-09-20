@@ -109,43 +109,6 @@ const bannerOffset =
 				  media={favicon.theme && `(prefers-color-scheme: ${favicon.theme})`}
 			/>
 		))}
-
-		<!-- 网站建站时间 -->
-		<script language=javascript>
-    		function siteTime(){
-        	window.setTimeout("siteTime()", 1000);
-        	var seconds = 1000;
-        	var minutes = seconds * 60;
-        	var hours = minutes * 60;
-        	var days = hours * 24;
-        	var years = days * 365;
-        	var today = new Date();
-        	var todayYear = today.getFullYear();
-        	var todayMonth = today.getMonth()+1;
-        	var todayDate = today.getDate();
-        	var todayHour = today.getHours();
-        	var todayMinute = today.getMinutes();
-        	var todaySecond = today.getSeconds();
-        	/* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
-        	year - 作为date对象的年份，为4位年份值
-        	month - 0-11之间的整数，做为date对象的月份
-        	day - 1-31之间的整数，做为date对象的天数
-        	hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
-        	minutes - 0-59之间的整数，做为date对象的分钟数
-        	seconds - 0-59之间的整数，做为date对象的秒数
-        	microseconds - 0-999之间的整数，做为date对象的毫秒数 */
-        	var t1 = Date.UTC(2024,01,01,00,00,00); //北京时间2016-12-1 00:00:00
-        	var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
-        	var diff = t2-t1;
-        	var diffYears = Math.floor(diff/years);
-        	var diffDays = Math.floor((diff/days)-diffYears*365);
-        	var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
-        	var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
-        	var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
-        	document.getElementById("sitetime").innerHTML="<p style='color: #F76FCE';> 本站已勉强运行 </p>"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
-    		}
-    		siteTime();
-		</script>
 		<!-- Set the theme before the page is rendered to avoid a flash -->
 		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
 			// Load the theme from local storage
@@ -254,8 +217,6 @@ const bannerOffset =
 		<slot name="head"></slot>
 
 		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
-		<!-- bing 收录 -->
-		<meta name="msvalidate.01" content="CC6B14864554806B879F04D6FC9817D3" />
 		<!-- Umami分析（自建） -->
 		 <script defer src="https://cloud.umami.is/script.js" data-website-id="50cd57c4-1d49-4941-88d5-b1cce22ee6a1"></script>
 	</head>
@@ -268,63 +229,6 @@ const bannerOffset =
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
 
-		<!-- 域名检测脚本 -->
-		<script is:inline define:vars={{officialSites: ["https://tbmiao.dpdns.org"]}}>
-			// 域名检测功能
-			function checkDomain() {
-				try {
-					// 获取当前访问的完整URL
-					const currentUrl = window.location.href;
-					// 获取当前域名
-					const currentDomain = window.location.hostname;
-					
-					// 获取所有官方域名
-					const officialDomains = officialSites.map(site => {
-						try {
-							return new URL(site).hostname;
-						} catch (e) {
-							return null;
-						}
-					}).filter(domain => domain !== null);
-					
-					// 检查当前域名是否为官方域名或本地开发环境
-					const isOfficialDomain = officialDomains.includes(currentDomain);
-					const isLocalDev = currentDomain === 'localhost' || currentDomain === '127.0.0.1';
-					
-					// 如果当前域名不是官方域名且不是本地开发环境
-					if (!isOfficialDomain && !isLocalDev) {
-						// 创建警告弹窗
-						const shouldRedirect = confirm(
-							`⚠️ 域名安全警告\n\n` +
-							`您当前访问的域名：${currentDomain}\n` +
-							`官方域名：${officialDomains.join(', ')}\n\n` +
-							`您可能正在访问非官方网站，存在安全风险！\n\n` +
-							`点击"确定"跳转到官方网站\n` +
-							`点击"取消"继续访问当前网站（不推荐）`
-						);
-						
-						// 如果用户选择跳转到官方网站
-						if (shouldRedirect) {
-							// 构建官方网站的对应页面URL（使用第一个官方网站）
-							const currentPath = window.location.pathname + window.location.search + window.location.hash;
-							const officialPageUrl = officialSites[0] + currentPath;
-							// 跳转到官方网站
-							window.location.href = officialPageUrl;
-						}
-					}
-				} catch (error) {
-					// 如果检测过程中出现错误，静默处理，不影响正常访问
-					console.warn('域名检测失败:', error);
-				}
-			}
-			
-			// 页面加载完成后执行域名检测
-			if (document.readyState === 'loading') {
-				document.addEventListener('DOMContentLoaded', checkDomain);
-			} else {
-				checkDomain();
-			}
-		</script>
 
 	</body>
 </html>
