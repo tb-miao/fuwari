@@ -1,3 +1,5 @@
+# 文件信息对应
+
 "fuwari\src\config.ts" 站点配置文件
 
 "fuwari\src\pages\friends.astro"  友链配置文件
