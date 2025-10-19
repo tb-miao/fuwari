@@ -12,14 +12,14 @@ function getDate() {
   const minutes = String(today.getMinutes()).padStart(2, "0")
   const seconds = String(today.getSeconds()).padStart(2, "0")
 
-  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`
 }
 
 const args = process.argv.slice(2)
 
 if (args.length === 0) {
-  console.error(`Error: No filename argument provided
-Usage: npm run new-post -- <filename>`)
+  console.error(`错误：未提供文件名参数
+  用法：npm run new-post -- <filename>`)
   process.exit(1) // Terminate the script and return error code 1
 }
 
@@ -48,15 +48,15 @@ if (!fs.existsSync(dirPath)) {
 const content = `---
 title: ${args[0]}
 published: ${getDate()}
+updated: ${getDate()}
 description: ''
 image: ''
 tags: []
-
-draft: false 
-lang: ''
+draft: false
+pinned: false
 ---
 `
 
 fs.writeFileSync(path.join(targetDir, fileName), content)
 
-console.log(`Post ${fullPath} created`)
+console.log(`文章 ${fullPath} 创建成功！`)

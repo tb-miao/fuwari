@@ -68,7 +68,11 @@ export const navBarConfig: NavBarConfig = {
 			url: "/friends/", // Internal links should not include the base path, as it is automatically added
 			external: false, // Show an external link icon and will open in a new tab
 		},
-		LinkPreset.lab,
+		{
+			name: "文档",
+			url: "https://docs.tbmiao.dpdns.org",
+			external: true,
+		},
 		{
 			name: "统计",
 			url: "https://cloud.umami.is/share/pBFqYW1e5248KxEz",
