@@ -69,13 +69,23 @@ export const navBarConfig: NavBarConfig = {
 			external: false, // Show an external link icon and will open in a new tab
 		},
 		{
-			name: "文档",
+			name: "Lab",
+			url : "/lab/",
+			external: false,		
+		},
+		{
+			name: "文档（bate）",
 			url: "https://docs.tbmiao.dpdns.org",
 			external: true,
 		},
 		{
 			name: "统计",
 			url: "https://cloud.umami.is/share/pBFqYW1e5248KxEz",
+			external: true,
+		},
+		{
+			name: "状态",
+			url: "https://stats.uptimerobot.com/DJSVHOeDrY",
 			external: true,
 		}
 	],
