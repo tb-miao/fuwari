@@ -71,7 +71,7 @@ export const navBarConfig: NavBarConfig = {
 		{
 			name: "Lab",
 			url : "https://lab.tbmiao.dpdns.org",
-			external: false,		
+			external: true,		
 		},
 		{
 			name: "文档（bate）",
