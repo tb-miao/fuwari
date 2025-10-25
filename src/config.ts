@@ -69,9 +69,9 @@ export const navBarConfig: NavBarConfig = {
 			external: false, // Show an external link icon and will open in a new tab
 		},
 		{
-			name: "Lab",
+			name: "lab",
 			url : "https://lab.tbmiao.dpdns.org",
-			external: true,		
+			external: true,
 		},
 		{
 			name: "文档（bate）",
