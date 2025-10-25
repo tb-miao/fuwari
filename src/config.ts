@@ -74,11 +74,6 @@ export const navBarConfig: NavBarConfig = {
 			external: true,
 		},
 		{
-			name: "文档（bate）",
-			url: "https://docs.tbmiao.dpdns.org",
-			external: true,
-		},
-		{
 			name: "统计",
 			url: "https://cloud.umami.is/share/pBFqYW1e5248KxEz",
 			external: true,
