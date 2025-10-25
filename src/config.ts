@@ -70,7 +70,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "Lab",
-			url : "/lab/",
+			url : "https://lab.tbmiao.dpdns.org",
 			external: false,		
 		},
 		{
