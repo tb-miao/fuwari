@@ -80,7 +80,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "状态",
-			url: "https://stats.uptimerobot.com/DJSVHOeDrY",
+			url: "https://status.tbmiao.dpdns.org",
 			external: true,
 		}
 	],
